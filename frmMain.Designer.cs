@@ -32,14 +32,18 @@ namespace DBPROJECT
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tsTop = new System.Windows.Forms.ToolStrip();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
-            this.tsBottom = new System.Windows.Forms.ToolStrip();
             this.btnMinimize = new System.Windows.Forms.ToolStripButton();
+            this.tsBottom = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtUserName = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.txtServer = new System.Windows.Forms.ToolStripTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsTop.SuspendLayout();
             this.tsBottom.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tsTop
@@ -49,7 +53,7 @@ namespace DBPROJECT
             this.tsTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnExit,
             this.btnMinimize});
-            this.tsTop.Location = new System.Drawing.Point(0, 0);
+            this.tsTop.Location = new System.Drawing.Point(0, 24);
             this.tsTop.Name = "tsTop";
             this.tsTop.Size = new System.Drawing.Size(800, 50);
             this.tsTop.TabIndex = 0;
@@ -66,6 +70,19 @@ namespace DBPROJECT
             this.btnExit.Size = new System.Drawing.Size(36, 50);
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnMinimize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Padding = new System.Windows.Forms.Padding(5);
+            this.btnMinimize.Size = new System.Drawing.Size(46, 40);
+            this.btnMinimize.Text = "toolStripButton1";
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
             // tsBottom
             // 
             this.tsBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -79,19 +96,6 @@ namespace DBPROJECT
             this.tsBottom.Size = new System.Drawing.Size(800, 25);
             this.tsBottom.TabIndex = 1;
             this.tsBottom.Text = "toolStrip1";
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnMinimize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMinimize.Margin = new System.Windows.Forms.Padding(5);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Padding = new System.Windows.Forms.Padding(5);
-            this.btnMinimize.Size = new System.Drawing.Size(46, 40);
-            this.btnMinimize.Text = "toolStripButton1";
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // toolStripLabel1
             // 
@@ -119,6 +123,32 @@ namespace DBPROJECT
             this.txtServer.ReadOnly = true;
             this.txtServer.Size = new System.Drawing.Size(100, 25);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuMain";
+            // 
+            // systemToolStripMenuItem
+            // 
+            this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem});
+            this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.systemToolStripMenuItem.Text = "System";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,7 +157,9 @@ namespace DBPROJECT
             this.ControlBox = false;
             this.Controls.Add(this.tsBottom);
             this.Controls.Add(this.tsTop);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
@@ -137,6 +169,8 @@ namespace DBPROJECT
             this.tsTop.PerformLayout();
             this.tsBottom.ResumeLayout(false);
             this.tsBottom.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,6 +186,9 @@ namespace DBPROJECT
         private System.Windows.Forms.ToolStripTextBox txtUserName;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripTextBox txtServer;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
 
