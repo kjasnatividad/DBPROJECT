@@ -93,6 +93,12 @@
     <Compile Include="frmMessageYesNoCancel.designer.cs">
       <DependentUpon>frmMessageYesNoCancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserProfile.Designer.cs">
+      <DependentUpon>frmUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWait.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMessageYesNoCancel.resx">
       <DependentUpon>frmMessageYesNoCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserProfile.resx">
+      <DependentUpon>frmUserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWait.resx">
       <DependentUpon>frmWait.cs</DependentUpon>
