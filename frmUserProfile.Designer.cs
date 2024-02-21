@@ -63,6 +63,7 @@ namespace DBPROJECT
             // 
             // btnLoadPhoto
             // 
+            this.btnLoadPhoto.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadPhoto.Image")));
             this.btnLoadPhoto.Location = new System.Drawing.Point(106, 269);
             this.btnLoadPhoto.Name = "btnLoadPhoto";
             this.btnLoadPhoto.Size = new System.Drawing.Size(125, 23);
@@ -73,6 +74,7 @@ namespace DBPROJECT
             // 
             // btnClear
             // 
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(237, 269);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(125, 23);
@@ -83,6 +85,8 @@ namespace DBPROJECT
             // 
             // btnChangePwd
             // 
+            this.btnChangePwd.Image = ((System.Drawing.Image)(resources.GetObject("btnChangePwd.Image")));
+            this.btnChangePwd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePwd.Location = new System.Drawing.Point(13, 500);
             this.btnChangePwd.Name = "btnChangePwd";
             this.btnChangePwd.Size = new System.Drawing.Size(218, 23);
@@ -92,6 +96,8 @@ namespace DBPROJECT
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRefresh.Location = new System.Drawing.Point(353, 500);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(91, 23);
@@ -101,6 +107,8 @@ namespace DBPROJECT
             // 
             // btnSave
             // 
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(256, 500);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 23);
