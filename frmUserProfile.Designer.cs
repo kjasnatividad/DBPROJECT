@@ -93,16 +93,17 @@ namespace DBPROJECT
             this.btnChangePwd.TabIndex = 3;
             this.btnChangePwd.Text = "Change User Password";
             this.btnChangePwd.UseVisualStyleBackColor = true;
+            this.btnChangePwd.Click += new System.EventHandler(this.btnChangePwd_Click);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRefresh.Location = new System.Drawing.Point(353, 500);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(91, 23);
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // btnSave
@@ -213,8 +214,8 @@ namespace DBPROJECT
             // 
             this.cbxGender.FormattingEnabled = true;
             this.cbxGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
+            "FEMALE",
+            "MALE"});
             this.cbxGender.Location = new System.Drawing.Point(106, 459);
             this.cbxGender.Name = "cbxGender";
             this.cbxGender.Size = new System.Drawing.Size(125, 21);
@@ -247,6 +248,7 @@ namespace DBPROJECT
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUserProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Profile";
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxUser)).EndInit();
             this.ResumeLayout(false);

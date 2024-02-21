@@ -60,20 +60,28 @@ namespace DBPROJECT
         private frmChangePassword ChangePasswordfrm;
         private void ChangePasswordfrm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ChangePasswordfrm = null;
+            ChangePasswordfrm.Dispose();
         }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangePasswordfrm = new frmChangePassword(Globals.gIdUser, Globals.gLoginName);
             ChangePasswordfrm.FormClosed += ChangePasswordfrm_FormClosed;
+            //ChangePasswordfrm.MdiParent = this;
             ChangePasswordfrm.ShowDialog();
         }
 
+        private frmUserProfile UserProfilefrm;
         private void editUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserProfilefrm = new frmUserProfile(Globals.gIdUser, Globals.gLoginName);
-            ChangePasswordfrm.FormClosed += ChangePasswordfrm_FormClosed;
-            ChangePasswordfrm.ShowDialog();
+            UserProfilefrm.FormClosed += UserProfilefrm_FormClosed;
+            UserProfilefrm.MdiParent = this;
+            UserProfilefrm.Show();
+        }
+
+        private void UserProfilefrm_FormClosed(object sender, EventArgs e)
+        {
+            UserProfilefrm.Dispose();
         }
     }
 }
