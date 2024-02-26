@@ -236,7 +236,7 @@ namespace DBPROJECT
             yy = DateTime.Parse(DateTime.Now.ToString()).Year.ToString();
             mm = DateTime.Parse(DateTime.Now.ToString()).Month.ToString();
             if (mm.Length < 2) mm = "0" + mm;
-
+  
             dd = DateTime.Parse(DateTime.Now.ToString()).Day.ToString();
             if (dd.Length < 2) dd = "0" + dd;
 

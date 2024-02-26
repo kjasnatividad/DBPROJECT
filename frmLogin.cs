@@ -117,7 +117,7 @@ namespace DBPROJECT
                     SqlCommand cmd = new SqlCommand("Select id,loginname,password from USERS where LoginName=@LoginName and Active=1", Globals.sqlconn);
                     cmd.Parameters.AddWithValue("@LoginName", this.txtLoginName.Text);
 
-                    SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                    SqlDataAdapter adapt = new SqlDataAdapter(cmd); 
 
                     DataSet ds = new DataSet();
 

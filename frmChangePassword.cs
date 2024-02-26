@@ -42,7 +42,7 @@ namespace DBPROJECT
                 this.txtPassword2.PasswordChar = '\0';
             }
             else
-            {
+            { 
                 this.btnShowHide.Text = "Show";
                 this.btnShowHide.ImageIndex = 0;
 

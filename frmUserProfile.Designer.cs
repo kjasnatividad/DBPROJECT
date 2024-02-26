@@ -55,7 +55,7 @@ namespace DBPROJECT
             // 
             this.pictBoxUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictBoxUser.Image = ((System.Drawing.Image)(resources.GetObject("pictBoxUser.Image")));
-            this.pictBoxUser.Location = new System.Drawing.Point(107, 12);
+            this.pictBoxUser.Location = new System.Drawing.Point(106, 12);
             this.pictBoxUser.Name = "pictBoxUser";
             this.pictBoxUser.Size = new System.Drawing.Size(255, 242);
             this.pictBoxUser.TabIndex = 0;

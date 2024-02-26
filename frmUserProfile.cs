@@ -14,7 +14,7 @@ namespace DBPROJECT
 {
     public partial class frmUserProfile : Form
     {
-        long iduser;
+        long iduser; 
         String loginname;
         public frmUserProfile(long liduser, String lname)
         {
