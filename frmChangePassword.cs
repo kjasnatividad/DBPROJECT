@@ -86,8 +86,8 @@ namespace DBPROJECT
                 SqlCommand cmd = new SqlCommand("spUpdateUserPwd", Globals.sqlconn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("lidUser", this.iduser);
-                cmd.Parameters.AddWithValue("lpassword", HashedPwd);
+                cmd.Parameters.AddWithValue("@lidUser", this.iduser);
+                cmd.Parameters.AddWithValue("@lpassword", HashedPwd);
 
                 cmd.ExecuteNonQuery();
 
