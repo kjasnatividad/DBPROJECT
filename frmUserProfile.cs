@@ -140,7 +140,8 @@ namespace DBPROJECT
         {
             this.frmUserProfile_LoadUserData();
             this.frmUserProfile_GetPhotofromField();
-            this.btnSave.Enabled = false;        }
+            this.btnSave.Enabled = false;
+        }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
