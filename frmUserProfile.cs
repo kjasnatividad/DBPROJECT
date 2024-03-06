@@ -149,15 +149,14 @@ namespace DBPROJECT
             {
                 if (Globals.glOpenSqlConn())
                  {
-                    SqlCommand cmd = new SqlCommand("spGetUserProfile", Globals.sqlconn);
+                    SqlCommand cmd = new SqlCommand("spClearUserPhoto", Globals.sqlconn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     cmd.Parameters.AddWithValue("@liduser", this.iduser);
 
                     cmd.ExecuteNonQuery();
                     this.pictBoxUser.Image = null;
                  }
-                    csMessageBox.Show("User Photo Erased", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                csMessageBox.Show("User Photo Erased", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

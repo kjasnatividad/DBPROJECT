@@ -30,7 +30,6 @@ namespace DBPROJECT
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserProfile));
-            this.pictBoxUser = new System.Windows.Forms.PictureBox();
             this.btnLoadPhoto = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnChangePwd = new System.Windows.Forms.Button();
@@ -48,18 +47,9 @@ namespace DBPROJECT
             this.txtSMTPport = new System.Windows.Forms.TextBox();
             this.pkrBirthdate = new System.Windows.Forms.DateTimePicker();
             this.cbxGender = new System.Windows.Forms.ComboBox();
+            this.pictBoxUser = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxUser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictBoxUser
-            // 
-            this.pictBoxUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictBoxUser.Image = ((System.Drawing.Image)(resources.GetObject("pictBoxUser.Image")));
-            this.pictBoxUser.Location = new System.Drawing.Point(106, 12);
-            this.pictBoxUser.Name = "pictBoxUser";
-            this.pictBoxUser.Size = new System.Drawing.Size(255, 242);
-            this.pictBoxUser.TabIndex = 0;
-            this.pictBoxUser.TabStop = false;
             // 
             // btnLoadPhoto
             // 
@@ -230,6 +220,15 @@ namespace DBPROJECT
             this.cbxGender.TabIndex = 17;
             this.cbxGender.TextChanged += new System.EventHandler(this.cbxGender_TextChanged);
             // 
+            // pictBoxUser
+            // 
+            this.pictBoxUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictBoxUser.Location = new System.Drawing.Point(106, 12);
+            this.pictBoxUser.Name = "pictBoxUser";
+            this.pictBoxUser.Size = new System.Drawing.Size(255, 242);
+            this.pictBoxUser.TabIndex = 0;
+            this.pictBoxUser.TabStop = false;
+            // 
             // frmUserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,8 +267,6 @@ namespace DBPROJECT
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictBoxUser;
         private System.Windows.Forms.Button btnLoadPhoto;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnChangePwd;
@@ -287,5 +284,6 @@ namespace DBPROJECT
         private System.Windows.Forms.TextBox txtSMTPport;
         private System.Windows.Forms.DateTimePicker pkrBirthdate;
         private System.Windows.Forms.ComboBox cbxGender;
+        private System.Windows.Forms.PictureBox pictBoxUser;
     }
 }
