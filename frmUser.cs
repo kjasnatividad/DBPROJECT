@@ -31,14 +31,14 @@ namespace DBPROJECT
             this.FormatGrid();
         }
 
-        private void BindMainGrid() 
+        private void BindMainGrid()
         {
-            if(Globals.glOpenSqlConn())
+            if (Globals.glOpenSqlConn())
             {
                 this.Dcommand = new SqlCommand("spGetAllUsers", Globals.sqlconn);
                 this.DAdapter = new SqlDataAdapter(this.Dcommand); //link between table and sqlcommand
 
-                this.DTable = new DataTable();
+                this.DTable = new DataTable();//arrays of rows
 
                 this.DAdapter.Fill(DTable);
 
@@ -51,7 +51,7 @@ namespace DBPROJECT
             }
         }
 
-        private void FormatGrid() 
+        private void FormatGrid()
         {
             this.dgvMain.Columns["id"].Visible = false;
 
@@ -71,6 +71,56 @@ namespace DBPROJECT
 
             this.dgvMain.EnableHeadersVisualStyles = false;
             this.dgvMain.ColumnHeadersDefaultCellStyle.BackColor = Globals.gGridHeaderColor;
+        }
+        private void dgvMain_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(((DataGridView)sender).RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString(String.Format("{0,10}", (e.RowIndex + 1).ToString()),
+                    e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+
+            }
+        }
+
+        private void dgvMain_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            int firstDisplayedCellIndex = dgvMain.FirstDisplayedCell.RowIndex;
+            int lastDisplayedCellIndex = firstDisplayedCellIndex + dgvMain.DisplayedRowCount(true);
+
+            Graphics Graphics = dgvMain.CreateGraphics();
+
+            int measureFirstDisplayed = (int)(Graphics.MeasureString(firstDisplayedCellIndex.ToString(), dgvMain.Font).Width);
+            int measureLastDisplayed = (int)(Graphics.MeasureString(lastDisplayedCellIndex.ToString(), dgvMain.Font).Width);
+            int rowHeaderWitdh = System.Math.Max(measureFirstDisplayed, measureLastDisplayed);
+            dgvMain.RowHeadersWidth = rowHeaderWitdh + 40;
+        }
+
+        private void dgvMain_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int iduser;
+
+            DataGridViewRow row = this.dgvMain.CurrentRow;
+            String name = row.Cells["loginname"].Value.ToString().Trim();
+                bool cancel = true;
+
+            DataGridViewRow rw = this.dgvMain.CurrentRow;
+            String n = rw.Cells["loginname"].Value.ToString().Trim();
+
+            if (row.Cells[idcolumn].Value != DBNull.Value &&
+                csMessageBox.Show("Delete the user:" + name, "Please confirm.",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (Globals.glOpenSqlConn())
+                {
+                   SqlCommand cmd = new SqlCommand("dbo.spusersDelete", Globals.sqlconn);
+                   cmd.CommandType = CommandType.StoredProcedure;
+                   cmd.Parameters.AddWithValue("@rid", Convert.ToInt64(row.Cells[idcolumn].Value));
+                   cmd.ExecuteNonQuery();
+                   e.Cancel = false;
+                }
+                Globals.glCloseSqlConn();
+            }
+            else e.Cancel = true;
         }
     }
 }
