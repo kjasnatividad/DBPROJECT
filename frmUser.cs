@@ -58,7 +58,7 @@ namespace DBPROJECT
 
         private void FormatGrid()
         {
-            this.dgvMain.Columns["id"].Visible = true;
+            this.dgvMain.Columns["id"].Visible = false;
 
             this.dgvMain.Columns["loginname"].HeaderText = "Login Name";
             this.dgvMain.Columns["active"].HeaderText = "Active";
@@ -68,6 +68,7 @@ namespace DBPROJECT
             this.dgvMain.Columns["smtpport"].HeaderText = "SMTP Port";
             this.dgvMain.Columns["gender"].HeaderText = "Gender";
             this.dgvMain.Columns["birthdate"].HeaderText = "Birthdate";
+            this.dgvMain.Columns["birthdate"].Visible = false;
 
             this.BackColor = Globals.gDialogBackgroundColor;
 
@@ -158,6 +159,7 @@ namespace DBPROJECT
                     String ugender = row.Cells["gender"].Value == DBNull.Value ? ""
                         : row.Cells["gender"].Value.ToString();
 
+                    /*
                     DateTime dt3;
                     if (userid == 0)
                     {
@@ -166,10 +168,12 @@ namespace DBPROJECT
                     else
                         dt3 = DateTime.Parse(row.Cells["birthdate"].Value.ToString());
                         String dt4 = Globals.glToMySqlDate(dt3);
+
+                    */
                     if (row.Cells["loginname"].Value == DBNull.Value)
                     {
                         csMessageBox.Show("Please encode a valid user name", "Warning",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         dgvMain.CancelEdit();
                     }
                     else
@@ -188,7 +192,7 @@ namespace DBPROJECT
                             cmd.Parameters.AddWithValue("@usmtphost", usmtphost);
                             cmd.Parameters.AddWithValue("@usmtpport", usmtpport);
                             cmd.Parameters.AddWithValue("@ugender", ugender);
-                            cmd.Parameters.AddWithValue("@ubirthdate", dt4);
+                            //cmd.Parameters.AddWithValue("@ubirthdate", dt4);
 
                             SqlDataAdapter dAdapt = new SqlDataAdapter(cmd);
 
@@ -209,6 +213,77 @@ namespace DBPROJECT
                     Globals.glCloseSqlConn();
                 }
                 Globals.glCloseSqlConn();
+            }
+        }
+        private Boolean SearchName(String searchVal)
+        {
+            bool resultVal = false;
+            int rowIndex = -1;
+
+            searchVal = searchVal.Trim().ToUpper();
+            if (searchVal != "")
+            {
+                this.bNavMain.MoveFirstItem.PerformClick();
+
+                foreach (DataGridViewRow row in dgvMain.Rows)
+                {
+                    try
+                    {
+                        if (row.Cells["loginname"].Value.ToString().StartsWith(searchVal))
+                        {
+                            rowIndex = row.Index;
+                            dgvMain.Rows[row.Index].Selected = true;
+                            resultVal = true;
+                            break;
+                        }
+                        this.bNavMain.MoveNextItem.PerformClick();
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                } // foreach
+                if (!resultVal)
+                    csMessageBox.Show("Record not found.", "Search Result",
+                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            } // if
+            return resultVal;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            String searchVal = txtSearch.Text.Trim().ToUpper();
+
+            if (this.SearchName(searchVal))
+            {
+                this.txtSearch.Clear();
+                this.dgvMain.Focus();
+
+            }
+            else
+            {
+                this.txtSearch.Focus();
+            }
+
+        }
+        private frmEditUser EditUserfrm;
+
+        private void dgvMain_DoubleClick(object sender, EventArgs e)
+        {
+            long userid;
+            DataGridViewRow row = dgvMain.CurrentRow;
+
+            if (row.Cells[this.idcolumn].Value == DBNull.Value)
+                userid = 0;
+            else
+                userid = Convert.ToInt64(row.Cells[this.idcolumn].Value);
+
+            if (userid != 0)
+            {
+                EditUserfrm = new frmEditUser(userid);
+                EditUserfrm.MdiParent = this.MdiParent;
+                EditUserfrm.Show();
             }
         }
     }
