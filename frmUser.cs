@@ -206,8 +206,10 @@ namespace DBPROJECT
                         }
                         catch (Exception ex)
                         {
-                            csMessageBox.Show("Exception Error:" + ex.Message,
-                                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            if(ex.Message != "There is no row at position 0.")
+                            {
+                                csMessageBox.Show("Exception Error:" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                     }
                     Globals.glCloseSqlConn();
