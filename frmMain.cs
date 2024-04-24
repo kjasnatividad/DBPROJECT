@@ -98,6 +98,36 @@ namespace DBPROJECT
         {
             Userfrm.Dispose();
         }
+
+        frmCustomers Customerfrm;
+
+        private void customer_btn_Click(object sender, EventArgs e)
+        {
+            Customerfrm = new frmCustomers();
+            //Customerfrm.FormClosed += Customerfrm_FormClosed;
+            Customerfrm.MdiParent = this;
+            Customerfrm.Show();
+        }
+
+        frmVendors Vendorfrm;
+
+        private void vendor_btn_Click(object sender, EventArgs e)
+        {
+            Vendorfrm = new frmVendors();
+            //Vendorfrm.FormClosed += Vedndorfrm_FormClosed;
+            Vendorfrm.MdiParent = this;
+            Vendorfrm.Show();
+        }
+
+        frmItems Itemfrm;
+
+        private void item_btn_Click(object sender, EventArgs e)
+        {
+            Itemfrm = new frmItems();
+            //Itemfrm.FormClosed += Itemfrm_FormClosed;
+            Itemfrm.MdiParent = this;
+            Itemfrm.Show();
+        }
     }
 }
     
