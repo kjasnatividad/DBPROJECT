@@ -104,9 +104,14 @@ namespace DBPROJECT
         private void customer_btn_Click(object sender, EventArgs e)
         {
             Customerfrm = new frmCustomers();
-            //Customerfrm.FormClosed += Customerfrm_FormClosed;
+            Customerfrm.FormClosed += Customerfrm_FormClosed;
             Customerfrm.MdiParent = this;
             Customerfrm.Show();
+        }
+
+        private void Customerfrm_FormClosed(object sender, EventArgs e)
+        {
+            Customerfrm.Dispose();
         }
 
         frmVendors Vendorfrm;
@@ -119,6 +124,11 @@ namespace DBPROJECT
             Vendorfrm.Show();
         }
 
+        private void Vendorfrm_FormClosed(object sender, EventArgs e)
+        {
+            Vendorfrm.Dispose();
+        }
+
         frmItems Itemfrm;
 
         private void item_btn_Click(object sender, EventArgs e)
@@ -128,6 +138,11 @@ namespace DBPROJECT
             Itemfrm.MdiParent = this;
             Itemfrm.Show();
         }
+        private void Itemfrm_FormClosed(object sender, EventArgs e)
+        {
+            Itemfrm.Dispose();
+        }
+
     }
 }
     
