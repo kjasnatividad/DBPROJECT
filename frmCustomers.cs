@@ -182,7 +182,7 @@ namespace DBPROJECT
                             newcustomerid = long.Parse(dt.Rows[0][0].ToString());
                             // save it to the grid
                             if (customerid == 0)
-                                row.Cells["idCustomers"].Value = newcustomerid;
+                                row.Cells["idCustomer"].Value = newcustomerid;
                         }
                         catch (Exception ex)
                         {
@@ -211,7 +211,7 @@ namespace DBPROJECT
                 {
                     try
                     {
-                        if (row.Cells["nameCustomers"].Value.ToString().StartsWith(searchVal))
+                        if (row.Cells["nameCustomer"].Value.ToString().StartsWith(searchVal))
                         {
                             rowIndex = row.Index;
                             dgvCustomers.Rows[row.Index].Selected = true;
@@ -249,11 +249,24 @@ namespace DBPROJECT
             }
         }
 
-         
+        private frmEditCustomer EditCustomerfrm;
 
         private void dgvCustomers_DoubleClick(object sender, EventArgs e)
         {
-    
+            long customerid;
+            DataGridViewRow row = dgvCustomers.CurrentRow;
+
+            if (row.Cells[this.cidcolumn].Value == DBNull.Value)
+                customerid = 0;
+            else
+                customerid = Convert.ToInt64(row.Cells[this.cidcolumn].Value);
+
+            if (customerid != 0)
+            {
+                EditCustomerfrm = new frmEditCustomer(customerid);
+                EditCustomerfrm.MdiParent = this.MdiParent;
+                EditCustomerfrm.Show();
+            }
         }
     }
 }
