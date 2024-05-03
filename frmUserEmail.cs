@@ -31,8 +31,6 @@ namespace DBPROJECT
             this.txtEmailfrom.Text = semail;
             this.txtSMTPHost.Text = ssmtphost;
             this.txtSMTPPort.Text = ssmtpport;
-
-
         }
 
         public void SetTheme()

@@ -53,6 +53,7 @@ namespace DBPROJECT
             // 
             // pictBoxCustomer
             // 
+            this.pictBoxCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictBoxCustomer.Location = new System.Drawing.Point(12, 12);
             this.pictBoxCustomer.Name = "pictBoxCustomer";
             this.pictBoxCustomer.Size = new System.Drawing.Size(336, 267);
@@ -74,6 +75,7 @@ namespace DBPROJECT
             this.btnClearPhoto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearPhoto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearPhoto.UseVisualStyleBackColor = true;
+            this.btnClearPhoto.Click += new System.EventHandler(this.btnClearPhoto_Click);
             // 
             // imageList1
             // 
@@ -130,6 +132,7 @@ namespace DBPROJECT
             this.btnSendEmail.Text = "Send Email";
             this.btnSendEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // label7
             // 
@@ -205,6 +208,7 @@ namespace DBPROJECT
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSave
             // 
@@ -220,6 +224,7 @@ namespace DBPROJECT
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label2
             // 
@@ -256,6 +261,7 @@ namespace DBPROJECT
             this.btnLoadPhoto.Text = "Load New Photo";
             this.btnLoadPhoto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLoadPhoto.UseVisualStyleBackColor = true;
+            this.btnLoadPhoto.Click += new System.EventHandler(this.btnLoadPhoto_Click);
             // 
             // frmEditCustomer
             // 
@@ -269,6 +275,7 @@ namespace DBPROJECT
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditCustomer";
             this.Text = "Edit Customer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditCustomer_FormClosing);
             this.Load += new System.EventHandler(this.frmEditCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxCustomer)).EndInit();
             this.groupBox2.ResumeLayout(false);

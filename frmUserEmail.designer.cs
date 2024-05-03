@@ -51,14 +51,14 @@ namespace DBPROJECT
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnSend = new System.Windows.Forms.ToolStripButton();
             this.tspClear = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddAttachment = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.tsbAddAttachment = new System.Windows.Forms.ToolStripButton();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmRremoveAttachment = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -281,6 +281,16 @@ namespace DBPROJECT
             this.tspClear.Text = "Clear";
             this.tspClear.Click += new System.EventHandler(this.tspClear_Click);
             // 
+            // tsbAddAttachment
+            // 
+            this.tsbAddAttachment.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAddAttachment.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddAttachment.Image")));
+            this.tsbAddAttachment.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddAttachment.Name = "tsbAddAttachment";
+            this.tsbAddAttachment.Size = new System.Drawing.Size(115, 42);
+            this.tsbAddAttachment.Text = "Add Attachment";
+            this.tsbAddAttachment.Click += new System.EventHandler(this.tsbAddAttachment_Click);
+            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.CheckPathExists = false;
@@ -295,31 +305,6 @@ namespace DBPROJECT
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Attachments";
             // 
-            // listBox1
-            // 
-            this.listBox1.ContextMenuStrip = this.contextMenuStrip1;
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(6, 21);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(271, 208);
-            this.listBox1.TabIndex = 0;
-            // 
-            // tsbAddAttachment
-            // 
-            this.tsbAddAttachment.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAddAttachment.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddAttachment.Image")));
-            this.tsbAddAttachment.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAddAttachment.Name = "tsbAddAttachment";
-            this.tsbAddAttachment.Size = new System.Drawing.Size(115, 42);
-            this.tsbAddAttachment.Text = "Add Attachment";
-            this.tsbAddAttachment.Click += new System.EventHandler(this.tsbAddAttachment_Click);
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -333,6 +318,21 @@ namespace DBPROJECT
             this.tsmRremoveAttachment.Size = new System.Drawing.Size(183, 22);
             this.tsmRremoveAttachment.Text = "Remove Attachment";
             this.tsmRremoveAttachment.Click += new System.EventHandler(this.tsmRremoveAttachment_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(6, 21);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(271, 208);
+            this.listBox1.TabIndex = 0;
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // frmUserEmail
             // 

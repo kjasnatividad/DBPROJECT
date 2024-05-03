@@ -22,14 +22,7 @@ namespace DBPROJECT
             InitializeComponent();
             this.idCustomer = cidCustomer;
 
-            this.SetTheme();
             this.btnSave.Enabled = false;
-        }
-        public void SetTheme()
-        {
-            this.BackColor = Globals.gDialogBackgroundColor;
-            this.groupBox2.BackColor = Globals.gDialogBackgroundColor;
-            this.pictBoxCustomer.BackColor = Globals.gDialogBackgroundColor;
         }
         public long customerid
         {
@@ -140,6 +133,135 @@ namespace DBPROJECT
                 cmd.ExecuteNonQuery();
             }
             Globals.glCloseSqlConn();
+        }
+
+        private void frmEditCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.btnSave.Enabled)
+            {
+                DialogResult dr;
+
+                dr = csMessageBox.Show("Changes not saved! Save changes", "Please confirm.",
+                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                switch (dr)
+                {
+                    case DialogResult.Yes:
+                        if (this.txtCustomerName.Text.Trim() == "")
+                        {
+                            csMessageBox.Show("Please provide a valid login name.", "Empty Login Name",
+                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            e.Cancel = true;
+                            this.txtCustomerEmail.Focus();
+                        }
+                        else
+                        {
+                            this.UpdateCustomer();
+
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+        private void SavePhototoField()
+        {
+            MemoryStream ms = new MemoryStream();
+            this.pictBoxCustomer.Image.Save(ms, pictBoxCustomer.Image.RawFormat);
+            byte[] img = ms.ToArray();
+
+            if (Globals.glOpenSqlConn())
+            {
+                String qrystr = "update customers set photoCustomer=@img where idCustomer =" +
+                    this.idCustomer.ToString();
+
+                SqlCommand cmd = new SqlCommand(qrystr, Globals.sqlconn);
+
+                cmd.Parameters.Add("@img", SqlDbType.Image); //MySqlDbType.Blob
+                cmd.Parameters["@img"].Value = img;
+
+                if (cmd.ExecuteNonQuery() == 1)
+                    csMessageBox.Show("New photo is saved...", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            Globals.glCloseSqlConn();
+
+        }
+        private void btnLoadPhoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openPhoto = new OpenFileDialog();
+            openPhoto.Filter = "Choose Image(*.jpg; *.png; *.gif)|*.jpg; *.png; *.gif";
+            if (openPhoto.ShowDialog() == DialogResult.OK)
+            {
+                pictBoxCustomer.Image = Image.FromFile(openPhoto.FileName);
+                this.SavePhototoField();
+            }
+        }
+
+        private void ClearPhototoField()
+        {
+            if (Globals.glOpenSqlConn())
+            {
+                String qrystr = "update customers set photoCustomer=null where idCustomer =" +
+                    this.idCustomer.ToString();
+
+                SqlCommand cmd = new SqlCommand(qrystr, Globals.sqlconn);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    this.pictBoxCustomer.Image = null;
+
+                    csMessageBox.Show("User photo is cleared...", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            Globals.glCloseSqlConn();
+        }
+
+        private void btnClearPhoto_Click(object sender, EventArgs e)
+        {
+            if (csMessageBox.Show("Customer photo cleared", "Information",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.ClearPhototoField();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.RefreshData();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (this.txtCustomerName.Text.Trim() == "")
+            {
+                csMessageBox.Show("Please provide a valid login name.", "Empty Login Name",
+                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.UpdateCustomer();
+                this.btnSave.Enabled = false;
+                //Globals.gLoginName = this.txtLoginName.Text;
+            }
+        }
+
+        private frmCustomerEmail CustomerEmailfrm;
+        private void btnSendEmail_Click(object sender, EventArgs e)
+        {
+            CustomerEmailfrm = new frmCustomerEmail(this.txtCustomerName.Text, this.txtCustomerEmail.Text);
+            CustomerEmailfrm.MdiParent = this.MdiParent;
+            CustomerEmailfrm.FormClosed += CustomerEmailfrm_FormClosed;
+            CustomerEmailfrm.Show();
+        }
+        private void CustomerEmailfrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CustomerEmailfrm = null;
         }
     }
 }
